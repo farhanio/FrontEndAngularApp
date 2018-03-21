@@ -1,0 +1,77 @@
+
+
+  <div class="container spacer">
+    <div class="panel panel-primary">
+      <div class="card-header ">Liste des Contacts</div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label>   key word </label>
+          <input type="text" [(ngModel)]="keyword"/>
+          <button class="btn btn-primary" (click)="chercher()"> Search </button>
+        </div>
+        <table class="table table-striped">
+          <tr>
+            <th>
+              ID
+            </th>
+
+
+            <th>
+              Nom
+            </th>
+
+            <th>
+              Prenom
+            </th>
+
+
+            <th>
+              email
+            </th>
+
+            <th>
+              Action
+            </th>
+
+
+
+          </tr>
+
+          <tr *ngFor="let c of pageContacts?.content">
+            <th>
+              {{c.id}}
+            </th>
+
+
+            <th>
+              {{c.nom}}
+            </th>
+
+            <th>
+              {{c.prenom}}
+            </th>
+
+
+            <th>
+              {{c.email}}
+            </th>
+
+            <th>
+              <button class="btn-primary" (click)="onEditContact(c.id)" class="clickable"> Edit </button>
+              <button class="btn-danger" (click)="deleteContact(c.id)" > Delete</button>
+            </th>
+          </tr>
+        </table>
+        <div class="container">
+          <ul class="nav nav-pills">
+            <li [ngClass]="{ 'active' : currentpage == i}" *ngFor="let p of pages ; let i=index ">
+              <a class="nav-link navbar-toggler" (click)="gotopage(i)" >{{i}}</a>
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
